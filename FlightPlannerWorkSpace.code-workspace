@@ -1,0 +1,37 @@
+{
+	"folders": [
+        {
+            "name": "Core",
+            "path": "Core"
+        },
+        {
+            "name": "BusinessEntities",
+            "path": "Resources/BusinessEntities"
+		},
+		{
+            "name": "BusinessLogic",
+            "path": "Resources/BusinessLogic"
+		},
+		{
+            "name": "BusinessLogicInterfaces",
+            "path": "Resources/BusinessLogicInterfaces"
+		},
+		{
+            "name": "DataAccess",
+            "path": "Resources/DataAccess"
+		},
+		{
+            "name": "DataAccessInterfaces",
+            "path": "Resources/DataAccessInterfaces"
+		},
+		{
+            "name": "Tests",
+            "path": "Tests"
+		},
+		{
+            "name": "UI",
+            "path": "UI"
+		}
+	],
+	"settings": {}
+}

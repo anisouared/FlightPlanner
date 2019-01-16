@@ -1,0 +1,42 @@
+@model UI.ViewModels.FlightViewModel
+
+<h2>Editer le Vol :</h2>
+
+@using (Html.BeginForm())
+{
+  
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartureAirPortCode, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.DepartureAirPortCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DepartureAirPortCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ArrivalAirPortCode, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.ArrivalAirPortCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ArrivalAirPortCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AirCraftId, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.DropDownListFor(model => model.AirCraftId, new SelectList(Model.AirCrafts, "Id", "Model"), "-- Choisissez le type d'avion --", new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.AirCraftId)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-7 col-md-8">
+                <input type="submit" value="Save" class="btn btn-lg btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "UserFlights", new { controller = "Flight" }, new { @class = "btn btn-default" })
+</div>

@@ -1,0 +1,40 @@
+@model List<UI.ViewModels.FlightViewModel>
+
+<div class="row">
+    <div class="col-xs-12 col-lg-12">
+        <h4 class="text-muted2">Les vols : </h4>
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Aeroport Depart</th>
+                    <th>Aeroport Arrivee</th>
+                    <th>Ville Depart</th>
+                    <th>Ville Arrivee</th>
+                    <th>Ajouté par</th>
+                    <th>Model avion</th>
+                    <th>Distance - KM</th>
+                    <th>Carburant - Kg</th>
+                    <th>Modifier</th>
+                </tr>
+            </thead>
+            <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.DepartureAirPortName</td>
+                        <td>@item.ArrivalAirPortName</td>
+                        <td>@item.DepartureCity</td>
+                        <td>@item.ArrivalCity</td>
+                        <td>@item.AddedBy</td>
+                        <td>@item.ModelPlane</td>
+                        <td>@item.DistanceByKM</td>
+                        <td>@item.FuelByKg</td>
+                        <td>@Html.ActionLink("Edit", "EditFlight", new { controller = "Flight", id = item.Id }, new { @class = "btn btn-lg btn-success²" })</td>
+                    </tr>          
+                    }           
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

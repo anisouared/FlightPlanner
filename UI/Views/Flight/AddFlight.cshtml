@@ -1,0 +1,25 @@
+@model UI.ViewModels.FlightToAddViewModel
+
+
+@using (Html.BeginForm())
+{
+    <h4 class="text-muted2">Ajouter un vol :</h4>
+    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+        <div class="form-group">
+            <label for="Login" class="sr-only">Login</label>
+            @Html.TextBoxFor(model => model.CodeFlightDeparture, new { @class="form-control", @placeholder="Code aéroport du depart" })
+            @Html.ValidationMessageFor(model => model.CodeFlightDeparture)
+        </div>
+        <div class="form-group">
+            <label for="key" class="sr-only">Mot de passe</label>
+            @Html.TextBoxFor(model => model.CodeFlightArrival, new { @class = "form-control", @placeholder = "Code aéroport de l'arrivée" })
+            @Html.ValidationMessageFor(model => model.CodeFlightArrival)
+        </div>
+        <div class="form-group">
+            @Html.DropDownListFor(model => model.FkAirCraft, new SelectList(Model.AirCrafts, "Id", "Model"), "-- Choisissez le type d'avion --", new { @class = "form-control input-lg", @tabindex = "7" })
+            @Html.ValidationMessageFor(model => model.FkAirCraft)
+        </div>
+
+        <input type="submit" id="btn-login" class="btn btn-lg btn-success" value="Ajout vol">
+    </form>
+}

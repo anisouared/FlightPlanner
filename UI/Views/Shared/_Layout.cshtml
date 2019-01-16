@@ -1,0 +1,92 @@
+﻿@inject SignInManager<UserBE> SignInManager
+@inject UserManager<UserBE> UserManager
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlightPlanner Application</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/narrow-jumbotron.css" asp-append-version="true"  >
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/">
+        <link rel="stylesheet" href="~/css/narrow-jumbotron.css" asp-append-version="true"  >
+    </environment>
+
+    @RenderSection("scripts", required: false)
+
+</head>
+<body>
+
+<div class="container">
+    <div class="header clearfix">
+    <nav>
+        <div>
+            <ul class="nav nav-pills pull-right">
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+
+                            <li class="nav-item active">
+                                <a data-toggle="collapse" data-target="#collapse1" href="#collapse1" class="nav-link">Actions</a>
+                                <div id="collapse1" class="panel-collapse collapse">
+                                    <ul class="list-group">
+                                            @Html.ActionLink("Accueil", "Index", new { controller = "Home" }, new { @class = "list-group-item" })
+                                            @Html.ActionLink("Ajouter un vol", "AddFlight", new { controller = "Flight" }, new { @class = "list-group-item" })
+                                            @Html.ActionLink("Mes vols", "UserFlights", new { controller = "Flight" }, new { @class = "list-group-item" })
+                                        <li class="list-group-item">
+                                            @Html.ActionLink("Se déconnecter", "LogOut", new { controller = "User"})
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Les vols", "AllFlights", new { controller = "Flight" }, new { @class = "list-group-item" })
+                            </li>
+
+                        }
+                        else
+                        {
+                            <li class="nav-item active">
+                                @Html.ActionLink("Se connecter", "LogIn", new { controller = "User" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("S'enregistrer", "Registration", new { controller = "User" }, new { @class = "list-group-item" })
+                            </li>
+                        }
+            <li>@Html.ActionLink("Contact", "Index", new { controller = "Home" }, new { @class = "list-group-item" })
+            </li>
+            </ul>
+        </div>
+    </nav>
+    <h3 class="text-muted">Flight Planner</h3>
+    </div>
+    
+    @RenderBody()
+
+    <footer class="footer">
+    <p>&copy; 2019 By Anis OUARED.</p>
+    </footer>
+
+</div> <!-- /container -->
+
+<!-- JavaScript -->
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="~/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

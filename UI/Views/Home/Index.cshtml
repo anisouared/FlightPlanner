@@ -1,0 +1,45 @@
+﻿@inject SignInManager<UserBE> SignInManager
+
+@model UI.ViewModels.UserLoginViewModel
+
+<div class="jumbotron">
+
+    <div class="row">
+        <div class="col-xs-12 col-lg-12">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <h4 class="text-muted2">Bonjour <span style="color:red;font-weight:bold">@Model.UserName</span>, vous etes connecté maintenant !</h4>
+                <h4 class="text-muted2">Vous pouvez ajouter des vols :)</h4>
+                <h4 class="text-muted2">(Veuillez cliquer sur action)</h4>
+            }
+            else
+            {
+                @using (Html.BeginForm("LogIn", "User", FormMethod.Post))
+                {
+                    <h4 class="text-muted2">Vous avez deja un compte ?</h4>
+                    <h4 class="text-muted2">Connectez-vous !</h4>
+                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                        <div class="form-group">
+                            <label for="Login" class="sr-only">Login</label>
+                            <!--<input type="email" name="email" id="email" class="form-control" placeholder="une_personne@example.com">-->
+                            @Html.TextBoxFor(model => model.UserName, new { @class="form-control", @placeholder="votre_login" })
+                            @Html.ValidationMessageFor(model => model.UserName)
+                        </div>
+                        <div class="form-group">
+                            <label for="key" class="sr-only">Mot de passe</label>
+                            <!--<input type="password" name="key" id="key" class="form-control" placeholder="mot_de_passe">-->
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "mot_de_passe" })
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </div>
+
+                        <input type="submit" id="btn-login" class="btn btn-lg btn-success" value="SE CONNECTER">
+                    </form>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

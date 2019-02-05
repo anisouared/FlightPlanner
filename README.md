@@ -1,7 +1,6 @@
 # FlightPlanner
 
 - L'application FlightPlanner contient toutes les fonctionnalités demandées dans l'énoncé avec un espace membre en bonus.
-- Durèes de developpement : 20h - 2 jours et demi (Entre deplacements à l'etranger et déménagement :))
 
 ========================================================================================================================================
 
